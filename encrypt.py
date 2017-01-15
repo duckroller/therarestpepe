@@ -1,12 +1,18 @@
 import os
 import sys
 
+source_folders = {"Settings"}
+
 def getDestinationFolder():
-    folders = {"Settings"}
-    for folder in folders:
+    result = ""
+    print("ls -d */")
+    for folder in sys.argv:
+        if folder not in source_folders:
+            result = folder
+    return result        
     
 file_name = "rarest_meme.png"
-destination_folder = "/media/pi/DISK_IMG"
+destination_folder = getDestinationFolder()
 
 #Encrypt the file
 def encrypt(file_name):
